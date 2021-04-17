@@ -17,3 +17,7 @@ func _physics_process(delta: float) -> void:
 	#Delta is the parameter passed in physics process
 	#Contains how much time has passed since the last time a physics process was called
 	move_and_collide(velocity * delta)
+
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if (event.is_action_pressed("shoot")):
+		$LaserWeapon.shoot()
