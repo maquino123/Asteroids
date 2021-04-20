@@ -10,3 +10,12 @@ func _process(delta: float) -> void:
 func _on_VisibilityNotifier2D_viewport_exited(viewport: Viewport) -> void:
 	queue_free()
 	
+
+
+func _on_Laser_body_shape_entered(body_id, body, body_shape, area_shape):
+	if(body.is_in_group("asteroids")):
+		body.call_deferred("explode")
+		get_parent().remove_child(self)
+		queue_free()
+		print("asteroid hit by laser")
+	pass # Replace with function body.
