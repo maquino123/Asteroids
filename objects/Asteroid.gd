@@ -1,23 +1,22 @@
 extends RigidBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal explode
 
 var asteroid_small_scene := load("res://objects/AsteroidSmall.tscn")
 var rng := RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 var exploded := false
+
+func _ready() -> void:
+	var main_camera = get_node("/root/Game/MainCamera")
+	self.connect("explode", main_camera, "asteroid_exploded")
 
 func explode():
 	if exploded:
 		return
 	exploded = true 
+	
+	emit_signal("explode")
 	
 	_spawn_asteroid_smalls(4)
 	
