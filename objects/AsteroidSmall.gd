@@ -7,6 +7,9 @@ func _ready() -> void:
 func explode():
 	if exploded:
 		return
+	_explosion_particles()
+	explosion_pitch = 1.4
+	_play_explosion_sound()
 	exploded = true 
 	
 	emit_signal("explode")
