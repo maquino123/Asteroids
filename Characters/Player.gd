@@ -3,6 +3,9 @@ extends KinematicBody2D
 const SPEED := 600
 
 signal laser_shoot
+signal player_died
+
+var player_explosion_scene = load("res://objects/ParticlesPlayerExplosion.tscn")
 
 func _physics_process(delta: float) -> void:
 	var velocity := Vector2()
@@ -25,4 +28,15 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 
 func _on_Hitbox_body_entered(body):
 	if (!self.is_queued_for_deletion() && body.is_in_group("asteroids")):
-		queue_free()
+		explode()
+		
+func explode():
+	var explosion = player_explosion_scene.instance()
+	explosion.position = self.position
+	get_parent().add_child(explosion) 
+	explosion.emitting = true
+	
+	emit_signal("player_died")
+	
+	queue_free()
+
