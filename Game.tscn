@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/Spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
@@ -33,11 +33,16 @@ font_data = ExtResource( 6 )
 size = 200
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 38
+font_data = ExtResource( 6 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 2 )
+position = Vector2( -1.33484, 0 )
 texture = ExtResource( 5 )
 centered = false
 offset = Vector2( -10, -10 )
@@ -45,7 +50,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1300, 740 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 630.499, 680.18 )
+position = Vector2( 630, 680 )
 
 [node name="Spawner" parent="." instance=ExtResource( 1 )]
 
@@ -110,8 +115,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Restart" type="Label" parent="GameOverLabel"]
+margin_left = 153.777
+margin_top = 308.677
+margin_right = 761.777
+margin_bottom = 347.677
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Restart the game by pressing \"R\""
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameOverTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="laser_shoot" from="Player" to="MainCamera" method="_on_Player_laser_shoot"]
-[connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
