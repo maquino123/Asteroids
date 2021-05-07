@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/UbuntuMono-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://game/NewGame.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 2 )
+
+[node name="NewGame" type="Control"]
+margin_right = 1280.0
+margin_bottom = 720.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 304.0
+margin_top = 312.0
+margin_right = 976.0
+margin_bottom = 408.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 672.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 1 )
+text = "New Game (placeholder scene)"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 53.0
+margin_right = 672.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 2 )
+text = "Back"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
