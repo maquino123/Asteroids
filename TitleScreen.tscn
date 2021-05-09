@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/MenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ButtonOriginal.gd" type="Script" id=2]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="ButtonOriginal" parent="." instance=ExtResource( 1 )]
+margin_left = 464.0
+margin_top = 288.0
+margin_right = 827.0
+margin_bottom = 378.0
+rect_pivot_offset = Vector2( 64, 192 )
+focus_neighbour_top = NodePath("../ButtonExit")
+focus_neighbour_bottom = NodePath("../ButtonVariant")
+text = "Original"
+script = ExtResource( 2 )
+start_focused = true
+
+[node name="ButtonVariant" parent="." instance=ExtResource( 1 )]
+margin_left = 464.0
+margin_top = 408.0
+margin_right = 827.0
+margin_bottom = 498.0
+rect_pivot_offset = Vector2( 64, 192 )
+focus_neighbour_top = NodePath("../ButtonOriginal")
+focus_neighbour_bottom = NodePath("../ButtonExit")
+text = "Variant"
+
+[node name="ButtonExit" parent="." instance=ExtResource( 1 )]
+margin_left = 464.0
+margin_top = 536.0
+margin_right = 827.0
+margin_bottom = 626.0
+rect_pivot_offset = Vector2( 64, 192 )
+focus_neighbour_top = NodePath("../ButtonVariant")
+focus_neighbour_bottom = NodePath("../ButtonOriginal")
+text = "Exit"
