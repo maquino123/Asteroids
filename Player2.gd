@@ -22,6 +22,9 @@ func _physics_process(delta: float) -> void:
 	if(Input.is_action_pressed("ui_right")):
 		velocity.x = SPEED
 		
+	if (hp <= 0):
+			explode()
+		
 	
 	#Delta is the parameter passed in physics process
 	#Contains how much time has passed since the last time a physics process was called
@@ -35,6 +38,8 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 
 func _on_Hitbox_body_entered(body):
 	if (!self.is_queued_for_deletion() && body.is_in_group("asteroids")):
+		hp -= 20
+		if (hp <= 0):
 			explode()
 		
 func explode():
