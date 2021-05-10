@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/LaserWeapon.gd" type="Script" id=1]
+[ext_resource path="res://Player2.gd" type="Script" id=2]
+[ext_resource path="res://Characters/Common/Wraparound.gd" type="Script" id=3]
+[ext_resource path="res://objects/LaserWeapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/Common/Wraparound.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/images/ships/playerShip3_blue.png" type="Texture" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+resource_local_to_scene = true
+points = PoolVector2Array( 0, -32, 40, 28, -40, 28 )
+
+[node name="Player2" type="KinematicBody2D"]
+position = Vector2( 630, 680 )
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 27.7795, 0 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 27.7795, -0.595276 )
+shape = SubResource( 6 )
+
+[node name="Wraparound" type="Node" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 3 )
+
+[node name="LaserWeapon" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 27, -64 )
+script = ExtResource( 1 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 27.5811, 0 )
+shape = SubResource( 6 )
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

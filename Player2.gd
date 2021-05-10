@@ -22,9 +22,6 @@ func _physics_process(delta: float) -> void:
 	if(Input.is_action_pressed("ui_right")):
 		velocity.x = SPEED
 		
-	if (hp <= 0):
-			explode()
-		
 	
 	#Delta is the parameter passed in physics process
 	#Contains how much time has passed since the last time a physics process was called
