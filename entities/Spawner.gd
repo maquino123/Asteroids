@@ -4,7 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var asteroid_scene = load("res://objects/Asteroid.tscn")
+var asteroid_scene = load("res://objects/AsteroidVariant.tscn")
 var asteroid_spawn_interval := 2.0
 var difficulty_index := 1.5
 
