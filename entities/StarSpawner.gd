@@ -4,7 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var asteroid_scene = load("res://objects/AsteroidVariant.tscn")
+var asteroid_scene = load("res://objects/Stars.tscn")
 var asteroid_spawn_interval := 2.0
 var difficulty_index := 3
 
@@ -30,10 +30,6 @@ func _set_asteroid_speed(asteroid):
 	asteroid.linear_velocity = Vector2(rand_range(-300, 300), -300)
 	asteroid.linear_damp = 0
 
-func _on_SpawnTimer_timeout():
-	_spawn_asteroid()
-	pass # Replace with function body.
-
 
 func _on_DifficultyTimer_timeout() -> void:
 	$SpawnTimer.wait_time = float(asteroid_spawn_interval) / float(difficulty_index)
@@ -46,3 +42,8 @@ func restart():
 	difficulty_index = 4
 	$SpawnTimer.start()
 	
+
+
+func _on_Timer_timeout():
+	_spawn_asteroid()
+	pass # Replace with function body.
