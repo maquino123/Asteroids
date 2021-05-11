@@ -1,42 +1,89 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://themes/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ButtonOriginal.gd" type="Script" id=2]
 [ext_resource path="res://themes/ButtonVariant.gd" type="Script" id=3]
 [ext_resource path="res://themes/ExitButton.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/images/logos/AsteroidsDeluxeLogo.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 72
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 72
+font_data = ExtResource( 5 )
 
 [node name="TitleScreen" type="Node2D"]
 
-[node name="ButtonOriginal" parent="." instance=ExtResource( 1 )]
-margin_left = 464.0
-margin_top = 288.0
-margin_right = 827.0
-margin_bottom = 378.0
-rect_pivot_offset = Vector2( 64, 192 )
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.0470588, 0.0745098, 0.172549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1160.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 1040.0
+margin_bottom = 169.0
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 173.0
+margin_right = 1040.0
+margin_bottom = 531.0
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 1040.0
+margin_bottom = 358.0
+alignment = 1
+
+[node name="ButtonOriginal" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 65.0
+margin_right = 1040.0
+margin_bottom = 138.0
 focus_neighbour_top = NodePath("../ButtonExit")
 focus_neighbour_bottom = NodePath("../ButtonVariant")
-text = "Original"
+custom_fonts/font = SubResource( 1 )
+text = "ORIGINAL GAME"
 script = ExtResource( 2 )
 start_focused = true
 
-[node name="ButtonVariant" parent="." instance=ExtResource( 1 )]
-margin_left = 464.0
-margin_top = 408.0
-margin_right = 827.0
-margin_bottom = 498.0
+[node name="ButtonVariant" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 142.0
+margin_right = 1040.0
+margin_bottom = 215.0
 rect_pivot_offset = Vector2( 64, 192 )
 focus_neighbour_top = NodePath("../ButtonOriginal")
 focus_neighbour_bottom = NodePath("../ButtonExit")
-text = "Variant"
+custom_fonts/font = SubResource( 2 )
+text = "VARIANT GAME"
 script = ExtResource( 3 )
 
-[node name="ButtonExit" parent="." instance=ExtResource( 1 )]
-margin_left = 464.0
-margin_top = 536.0
-margin_right = 827.0
-margin_bottom = 626.0
+[node name="ButtonExit" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 219.0
+margin_right = 1040.0
+margin_bottom = 292.0
 rect_pivot_offset = Vector2( 64, 192 )
 focus_neighbour_top = NodePath("../ButtonVariant")
 focus_neighbour_bottom = NodePath("../ButtonOriginal")
-text = "Exit"
+custom_fonts/font = SubResource( 3 )
+text = "EXIT"
 script = ExtResource( 4 )
