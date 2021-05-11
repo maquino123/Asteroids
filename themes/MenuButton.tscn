@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://themes/selected_button.tres" type="StyleBox" id=1]
+[ext_resource path="res://themes/non_selected_button.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 3 )
+
+[node name="Button" type="Button"]
+margin_right = 652.0
+margin_bottom = 162.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 360, 60 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.792157, 0.490196, 0.121569, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
