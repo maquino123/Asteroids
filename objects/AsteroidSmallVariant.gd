@@ -1,4 +1,4 @@
-extends "res://objects/Asteroid.gd"
+extends "res://objects/AsteroidVariant.gd"
 
 func _ready() -> void:
 	var main_camera = get_node("/root/Variant/MainCamera")

@@ -15,9 +15,9 @@ var score_value = 100
 var points_scored_scene = load("res://ui/PointsScored.tscn")
 
 func _ready() -> void:
-	var main_camera = get_node("/root/Variant/MainCamera")
+	var main_camera = get_node("/root/Game/MainCamera")
 	self.connect("explode", main_camera, "asteroid_exploded")
-	var label = get_tree().get_root().get_node("Variant/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score")
+	var label = get_tree().get_root().get_node("Game/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score")
 	self.connect("score_changed", label, "update_score")
 	
 func explode():

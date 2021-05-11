@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://entities/AsteroidSpawnerVar.gd" type="Script" id=1]
+
+[node name="AsteroidSpawnerVar" type="Node"]
+script = ExtResource( 1 )
+
+[node name="SpawnTimerVar" type="Timer" parent="."]
+autostart = true
+
+[node name="DifficultyTimerVar" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="timeout" from="SpawnTimerVar" to="." method="_on_SpawnTimerVar_timeout"]
+[connection signal="timeout" from="DifficultyTimerVar" to="." method="_on_DifficultyTimerVar_timeout"]

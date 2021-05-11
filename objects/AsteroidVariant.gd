@@ -3,7 +3,7 @@ extends RigidBody2D
 signal explode
 
 var explosion_particles_scene := load("res://objects/ParticlesAsteroidExplosion.tscn")
-var asteroid_small_scene := load("res://objects/AsteroidSmall.tscn")
+var asteroid_small_scene := load("res://objects/AsteroidSmallVariant.tscn")
 var rng := RandomNumberGenerator.new()
 
 var exploded := false

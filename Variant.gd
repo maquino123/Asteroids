@@ -19,7 +19,7 @@ func _on_Player_player_died() -> void:
 	$MusicPlayer.volume_db = -5
 	
 	# stop new asteroids from spawning
-	$Spawner/SpawnTimer.stop()
+	$AsteroidSpawnerVar/SpawnTimerVar.stop()
 	
 	# turn off "roaring" sound for asteroids that already exist
 	for a in get_tree().get_nodes_in_group("asteroids"):
@@ -43,7 +43,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 func _restart_game():
 	_undo_game_over()
 	_respawn()
-	$Spawner.restart()
+	$AsteroidSpawnerVar.restart()
 	$GUI/MarginContainer/HBoxContainer/VBoxContainer/Score.reset()
 	game_over = false
 	

@@ -4,9 +4,9 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var asteroid_scene = load("res://objects/AsteroidVariant.tscn")
+var asteroid_scene = load("res://objects/Asteroid.tscn")
 var asteroid_spawn_interval := 2.0
-var difficulty_index := 3
+var difficulty_index := 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,12 +37,12 @@ func _on_SpawnTimer_timeout():
 
 func _on_DifficultyTimer_timeout() -> void:
 	$SpawnTimer.wait_time = float(asteroid_spawn_interval) / float(difficulty_index)
-	difficulty_index += 2
+	difficulty_index += 1
 	
 func restart():
 	$SpawnTimer.stop()
 	$DifficultyTimer.stop()
 	asteroid_spawn_interval = 2
-	difficulty_index = 4
+	difficulty_index = 2
 	$SpawnTimer.start()
 	

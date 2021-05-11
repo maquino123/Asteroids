@@ -29,19 +29,19 @@ shader = SubResource( 1 )
 shader_param/direction = Vector2( 0, -1 )
 shader_param/speed_scale = 0.5
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 resource_local_to_scene = true
 points = PoolVector2Array( 0, -32, 40, 28, -40, 28 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 200
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 38
 font_data = ExtResource( 6 )
 
@@ -68,7 +68,7 @@ texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 27.7795, -0.595276 )
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Wraparound" parent="Player" instance=ExtResource( 11 )]
 script = ExtResource( 9 )
@@ -80,7 +80,7 @@ position = Vector2( 27, -64 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
 position = Vector2( 27.5811, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Spawner" parent="." instance=ExtResource( 1 )]
 
@@ -120,7 +120,7 @@ size_flags_horizontal = 3
 [node name="Score" type="Label" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 1240.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "0"
 align = 2
 script = ExtResource( 7 )
@@ -136,7 +136,7 @@ margin_left = 212.0
 margin_top = 190.0
 margin_right = 1112.0
 margin_bottom = 390.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "GAME OVER"
 align = 1
@@ -150,7 +150,7 @@ margin_left = 153.777
 margin_top = 308.677
 margin_right = 761.777
 margin_bottom = 347.677
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Restart the game by pressing \"R\""
 align = 1

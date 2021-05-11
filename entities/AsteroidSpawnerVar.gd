@@ -4,9 +4,9 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var asteroid_scene = load("res://objects/Planet.tscn")
+var asteroid_scene = load("res://objects/AsteroidVariant.tscn")
 var asteroid_spawn_interval := 2.0
-var difficulty_index := 2
+var difficulty_index := 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +15,6 @@ func _ready() -> void:
 func _spawn_asteroid():
 	var asteroid = asteroid_scene.instance()
 	_set_spawn_position(asteroid)
-	_set_asteroid_speed(asteroid)
 	add_child(asteroid)
 
 func _set_spawn_position(asteroid):
@@ -28,27 +27,22 @@ func _set_spawn_position(asteroid):
 func _set_asteroid_speed(asteroid):
 	asteroid.angular_velocity = rand_range(-4, 4)
 	asteroid.angular_damp = 0
-	asteroid.linear_velocity = Vector2(rand_range(-300, 300), 300)
+	asteroid.linear_velocity = Vector2(rand_range(-300, 300), -300)
 	asteroid.linear_damp = 0
 
-func _on_SpawnTimer_timeout():
+func _on_SpawnTimerVar_timeout():
 	_spawn_asteroid()
 	pass # Replace with function body.
 
 
-func _on_DifficultyTimer_timeout() -> void:
-	$Timer.wait_time = float(asteroid_spawn_interval) / float(difficulty_index)
+func _on_DifficultyTimerVar_timeout() -> void:
+	$SpawnTimerVar.wait_time = float(asteroid_spawn_interval) / float(difficulty_index)
 	difficulty_index += 2
 	
 func restart():
-	$Timer.stop()
-	$DifficultyTimer.stop()
+	$SpawnTimerVar.stop()
+	$DifficultyTimerVar.stop()
 	asteroid_spawn_interval = 2
-	difficulty_index = 2
-	$Timer.start()
-	
+	difficulty_index = 3
+	$SpawnTimerVar.start()
 
-
-func _on_Timer_timeout():
-	_spawn_asteroid()
-	pass # Replace with function body.
