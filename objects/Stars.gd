@@ -10,7 +10,7 @@ var exploded := false
 var explosion_pitch = 1
 
 signal score_changed
-#stars woth 200 points
+#stars woth 2000 points
 var score_value = 2000
 var points_scored_scene = load("res://ui/PointsScored.tscn")
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/2NRO8OT - The TV-Asteroid.wav-a3cd6939a7fcb81cae408ba8ca10b95d.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/2NRO8OT - The TV-Asteroid.wav"
+dest_files=[ "res://.import/2NRO8OT - The TV-Asteroid.wav-a3cd6939a7fcb81cae408ba8ca10b95d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

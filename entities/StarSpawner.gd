@@ -6,7 +6,7 @@ extends Node
 # var b = "text"
 var asteroid_scene = load("res://objects/Stars.tscn")
 var asteroid_spawn_interval := 2.0
-var difficulty_index := 3
+var difficulty_index := 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +15,7 @@ func _ready() -> void:
 func _spawn_asteroid():
 	var asteroid = asteroid_scene.instance()
 	_set_spawn_position(asteroid)
+	_set_asteroid_speed(asteroid)
 	add_child(asteroid)
 
 func _set_spawn_position(asteroid):
@@ -27,7 +28,7 @@ func _set_spawn_position(asteroid):
 func _set_asteroid_speed(asteroid):
 	asteroid.angular_velocity = rand_range(-4, 4)
 	asteroid.angular_damp = 0
-	asteroid.linear_velocity = Vector2(rand_range(-300, 300), -300)
+	asteroid.linear_velocity = Vector2(rand_range(-300, 300), 300)
 	asteroid.linear_damp = 0
 
 
@@ -39,7 +40,7 @@ func restart():
 	$SpawnTimer.stop()
 	$DifficultyTimer.stop()
 	asteroid_spawn_interval = 2
-	difficulty_index = 4
+	difficulty_index = 2
 	$SpawnTimer.start()
 	
 
